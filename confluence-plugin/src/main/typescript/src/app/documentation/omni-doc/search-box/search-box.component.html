@@ -1,0 +1,28 @@
+<div class="search">
+  <template #customItemTemplate let-model="item">
+    <div class="crop">{{model.shortName}}</div>
+    <div class="crop"><span style="color: #C0C0C0; font-size: 12px">{{model.fullName}}</span></div>
+  </template>
+  <input class="text long-field" type="text"
+         [(ngModel)]="autoCompleteSearchTerm"
+         [typeahead]="dataSource"
+         (typeaheadLoading)="changeTypeaheadLoading($event)"
+         (typeaheadNoResults)="changeTypeaheadNoResults($event)"
+         [typeaheadItemTemplate]="customItemTemplate"
+         [typeaheadWaitMs]="300"
+         [typeaheadMinLength]="3"
+         placeholder="Quick search (min. 3 chars)"
+         (typeaheadOnSelect)="typeaheadOnSelect($event)"
+  >
+</div>
+
+<div class="aui-message aui-message-hint" *ngIf="typeaheadNoResults">
+  <p>No results found.</p>
+</div>
+
+<div *ngIf="typeaheadLoading">
+  <span class="aui-icon aui-icon-wait loading">Loading...</span>
+</div>
+
+
+

@@ -1,0 +1,16 @@
+.tree {
+  width: 100%;
+  overflow: hidden;
+}
+
+.javadoc_container {
+  display: block;
+  margin: auto;
+  width: 30%;
+}
+
+.menu{
+  width:280px !important;
+}
+
+

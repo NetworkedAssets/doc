@@ -1,0 +1,9 @@
+<div *ngIf="loading" class="loading">
+  <span class="aui-icon aui-icon aui-icon-wait">Loading...</span>
+</div>
+
+<div class="aui-message aui-message-hint" *ngIf="!loading && content===''">
+  <p>Click on left sidebar to display any content.</p>
+</div>
+
+<div *ngIf="!loading && content!==''" [innerHTML]="content"></div>

@@ -1,0 +1,12 @@
+{
+  "name": "My very sophisticated source name, isn't it?",
+  "slug": "staszek",
+  "url": "http://127.0.0.1:12345/bitbucket",
+  "sourceType": "STASH",
+  "username": "admin",
+  "password": null,
+  "sourceExists" : true,
+  "credentialsCorrect" : true,
+  "verified" : false,
+  "slugUnique" : true
+}

@@ -1,0 +1,20 @@
+#set ( $d = "$")
+<html>
+<head>
+    <title>Configure DoC</title>
+    <meta name="decorator" content="atl.admin"/>
+
+    #requireResource("confluence.web.resources:ajs")
+    #requireResource("com.atlassian.auiplugin:aui-select2")
+    #requireResource("com.atlassian.auiplugin:aui-toggle")
+    #requireResource("com.atlassian.auiplugin:dialog2")
+    #requireResource("com.networkedassets.autodoc.confluence-plugin:configuration-resources")
+    #putMetadata('configLocation', "admin")
+</head>
+
+<body>
+    #parse ( "/template/includes/actionmessages.vm" )
+    #parse ( "/template/includes/actionerrors.vm" )
+    $innerHtml
+</body>
+</html>

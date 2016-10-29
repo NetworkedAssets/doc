@@ -1,0 +1,308 @@
+/*:host /deep/ .loadingSpinner {
+  width: 100%;
+  height: 200px;
+}*/
+
+:host /deep/ h1 span.entityType, :host /deep/ h1 span.modifier {
+  font-size: 0.4em;
+}
+
+:host /deep/ .supers, :host /deep/ .interfaces {
+  margin-left: 50px;
+}
+
+:host /deep/ .elems > table {
+  width: 100%;
+  table-layout: auto;
+}
+
+:host /deep/ .elems > table td {
+  vertical-align: top;
+  padding: 10px;
+}
+
+:host /deep/ .elems > table td:first-child {
+  width: 200px;
+  text-align: right;
+}
+
+:host /deep/ .elems table {
+  border: 2px solid #f5f5f5;
+  border-spacing: 0;
+}
+
+:host /deep/ .elems .elem {
+  padding: 0.5em;
+  background: #fff;
+}
+
+:host /deep/ .elems .elem.even {
+  background: #f5f5f5;
+}
+
+:host /deep/ .elems .elem.selected td {
+  background: #ebf2f9;
+}
+
+:host /deep/ span.modifier {
+  font-size: 0.9em;
+  line-height: 1.2em;
+  vertical-align: 0.1em;
+}
+
+:host /deep/ span.generic {
+  margin-right: 0.3em;
+  font-weight: 600;
+}
+
+:host /deep/ span.modifier,
+:host /deep/ span.type,
+:host /deep/ a.type {
+  background: #e9e9e9;
+  font-weight: 600;
+  display: inline-block;
+  border-radius: 1em;
+  margin: 0.2em 0;
+  vertical-align: 0;
+  padding: 0 0.75em;
+}
+
+:host /deep/ span.modifier:not(:first-of-type) {
+  margin: 0 4px;
+}
+
+:host /deep/ span.type,
+:host /deep/ a.type {
+  background: #e9e9e9;
+  border-radius: 0.2em;
+  cursor: default;
+}
+
+:host /deep/ span.modifier.public {
+  background: #59afe1;
+  color: #fff;
+}
+
+:host /deep/ span.entityType {
+  border-radius: 0.2em;
+  color: #fff;
+  display: inline-block;
+  font-family: sans-serif !important;
+  text-transform: uppercase;
+  text-align: center;
+  min-width: 1em;
+  height: 1em;
+  font-size: 0.8em;
+  line-height: 1em;
+  font-weight: bold;
+  margin-right: 0.2em;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+:host /deep/ span.entityType.entityTypePackage {
+  background: #666;
+}
+
+:host /deep/ span.entityType.entityTypeClass {
+  background: #59afe1;
+}
+
+:host /deep/ span.entityType.entityTypeInterface {
+  background: #8eb021;
+}
+
+:host /deep/ span.entityType.entityTypeAnnotation {
+  background: #f6c342;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+:host /deep/ span.entityType.entityTypeException {
+  background: #d04437;
+}
+
+:host /deep/ span.entityType.entityTypeEnum {
+  background: #84bbc6;
+}
+
+:host /deep/ span.modifier.static {
+  background: #f6c342;
+}
+
+:host /deep/ span.modifier.private {
+  background: #d04437;
+  color: #fff;
+}
+
+:host /deep/ span.modifier.abstract {
+  background: #f15c75;
+  color: #fff;
+}
+
+:host /deep/ span.modifier.protected {
+  background: #654982;
+  color: #fff;
+}
+
+:host /deep/ span.modifier.synchronized {
+  background: #815b3a;
+  color: #fff;
+}
+
+:host /deep/ .elems .elem a.name,
+:host /deep/ .elems .elem span.name,
+:host /deep/ .methods .method > span.type,
+:host /deep/ .elems .elem span.parameterName {
+  font-size: 1.0em;
+  font-weight: 600;
+}
+
+:host /deep/ .elems .elem a.name,
+:host /deep/ .elems .elem span.name {
+  font-size: 1.2em;
+}
+
+:host /deep/ .elems .elem > span.parameters .parenthesis,
+:host /deep/ .elems .elem > span.parameters .comma {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+:host /deep/ .elems .elem span.parameters span.parameter {
+  margin: 0 0.2em;
+  white-space: nowrap;
+}
+
+:host /deep/ .elems .elem span.parameters span.parameter:last-of-type {
+  margin-right: 0;
+}
+
+:host /deep/ .elems .elem span.parameters span.parameterName {
+  font-weight: 400;
+}
+
+:host /deep/ .elems .elem span.parameters a.type,
+:host /deep/ .elems .elem span.parameters span.type {
+  background: #e9e9e9;
+}
+
+:host /deep/ .elem > span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+:host /deep/ span.modifiers {
+  margin-right: 5px;
+}
+
+:host /deep/ .elem > span.modifiers {
+  display: block;
+  margin-bottom: 5px;
+}
+
+:host /deep/ .elem.abstract span.name {
+  font-style: italic;
+}
+
+:host /deep/ .elem.static span.name {
+  /*text-decoration: underline;*/
+}
+
+:host /deep/ .elem .toggle {
+  cursor: pointer;
+  float: right;
+}
+
+:host /deep/ .elem .toggle {
+  border-radius: 0.2em;
+  padding: 0.2em;
+  background: #eee;
+}
+
+:host /deep/ .elem.even .toggle {
+  background: white;
+}
+
+:host /deep/ .elem .details {
+  border-radius: 0.2em;
+  padding: 0.5em;
+  margin-top: 0.5em;
+}
+
+:host /deep/ .name.abstract {
+  font-style: italic;
+}
+
+:host /deep/ .name.static {
+  /*text-decoration: underline;*/
+}
+
+:host /deep/ .elem .exceptions {
+  display: block;
+  margin-left: 50px;
+  margin-top: 5px;
+}
+
+:host /deep/ .elem .exceptions .throws {
+
+}
+
+:host /deep/ .comment {
+  /*font-style: italic;*/
+}
+
+:host /deep/ .typeWrapper {
+  /*min-width: 150px;*/
+  display: inline-block;
+}
+
+:host /deep/ .annotations .annotation {
+  display: block;
+  color: #999999;
+}
+
+:host /deep/ .annotations.inline .annotation {
+  display: inline-block;
+}
+
+:host /deep/ h3.annotations {
+  margin-top: 0;
+  font-style: normal;
+  font-weight: normal;
+}
+
+:host /deep/ a.type {
+  cursor: pointer;
+  color: #3572b0;
+}
+
+:host /deep/ a.type:hover {
+  text-decoration: underline;
+}
+
+:host /deep/ p {
+  margin: 0;
+}
+
+:host /deep/ .monospace {
+  font-family: monospace;
+}
+
+:host /deep/ h2.collapsible > span {
+  cursor: pointer;
+}
+
+:host /deep/ h2.collapsible span.aui-icon {
+  vertical-align: 0.4em;
+}
+
+.javadoc_container {
+  display: block;
+  margin: auto;
+  width: 30%;
+}
+
+.loading {
+  display: block;
+  margin: auto;
+  width: 20%;
+}

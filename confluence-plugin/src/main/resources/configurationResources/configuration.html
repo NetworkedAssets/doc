@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
+    <!--  AUI Core -->
+    <script src="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/js/aui.js"></script>
+    <link rel="stylesheet"
+          href="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/css/aui.css"
+          media="all">
+
+    <!-- AUI Experimental components -->
+    <script src="//cdn.rawgit.com/jrburke/almond/0.3.0/almond.js"></script>
+    <link rel="stylesheet"
+          href="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/css/aui-experimental.css"
+          media="all">
+    <script src="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/js/aui-experimental.js"></script>
+
+    <!-- AUI Datepicker and Soy templates -->
+    <script src="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/js/aui-datepicker.js"></script>
+    <script src="//aui-cdn.atlassian.com/aui-adg/0.0.5-7-29-snapshot-aui-3550-responsive-header-fixes/js/aui-soy.js"></script>
+
+
+    <script src="js/app.js"></script>
+    <script src="js/ctrl/TransformerUrlController.js"></script>
+    <script src="js/services/settingsService.js"></script>
+    <script src="js/services/urlService.js"></script>
+    <script src="js/dirs/docAuiDatePicker.js"></script>
+    <script src="js/dirs/auiSelect2.js"></script>
+    <script src="js/dirs/docAuiButtonGroup.js"></script>
+
+
+    <link rel="stylesheet" href="css/doc_config.css" media="all">
+    <style>
+        body {
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+<!--CUT-START-->
+<section ng-app="DoC_Config" id="doc_config">
+    <div ng-if="$root.location == 'admin' || $root.location == 'local'"
+         class="{{$root.location == 'local'?'tabs-pane active-pane':''}}" id="doc_config-admin">
+        <div ng-controller="TransformerUrlController as tc">
+            <form class="aui" ng-submit="tc.set()">
+                <fieldset>
+                    <div class="field-group">
+                        <label for="doc_config-transformerUrl">Transformer URL</label>
+                        <input id="doc_config-transformerUrl" type="text" class="text" ng-model="tc.url"
+                               placeholder="enter transformer url">
+                    </div>
+                    <div class="buttons-container">
+                        <button class="aui-button aui-button-primary">Save</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</section>
+<!--CUT-END-->
+</body>
+</html>

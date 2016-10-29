@@ -1,0 +1,167 @@
+{namespace com.networkedassets.autodoc.configuration}
+
+/**
+ * Renders the configure screen
+ * @param allProjects
+ * @param pages
+ */
+{template .configureScreen}
+<div class="pagecontent">
+    <h2>Select events to watch for</h2>
+    <div class="projects">
+        {foreach $project in $allProjects}
+            {call .project data="$project"}
+                {param pages: $pages/}
+            {/call}
+        {/foreach}
+    </div>
+    <button class="aui-button aui-button-primary" id="save-button">Save</button>
+</div>
+{/template}
+
+/**
+ * Renders the project panel
+ * @param pages
+ * @param name
+ * @param key
+ * @param repos
+ */
+{template .project}
+<div class="project container" data-project-key="{$key}" data-project-name="{$name}">
+    <div class="expandable-header">
+        <h3><span class="aui-icon aui-icon-small aui-iconfont-arrows-down expand-arrow">Expand</span>{$name}</h3>
+    </div>
+    <div class="expandable-contents">
+        {foreach $repo in $repos}
+            {call .repo data="$repo"}
+                {param pages: $pages/}
+            {/call}
+        {/foreach}
+    </div>
+</div>
+{/template}
+
+/**
+ * Renders the repo panel
+ * @param pages
+ * @param name
+ * @param slug
+ * @param branches
+ */
+{template .repo}
+<div class="repo container" data-repo-slug="{$slug}" data-repo-name="{$name}">
+    <div class="expandable-header">
+        <h3><span class="aui-icon aui-icon-small aui-iconfont-arrows-down expand-arrow">Expand</span>{$name}</h3>
+    </div>
+    <div class="expandable-contents">
+        {foreach $branch in $branches}
+            {call .branch data="$branch"}
+                {param pages: $pages/}
+            {/call}
+        {/foreach}
+    </div>
+</div>
+{/template}
+
+/**
+ * Renders the branch panel
+ * @param pages
+ * @param displayId
+ * @param id
+ * @param javadocPageId
+ * @param umlPageId
+ * @param isListened
+ * @param scheduledEvents
+ */
+{template .branch}
+<div class="branch container" data-branch-id="{$id}" data-branch-display-id="{$displayId}">
+    <div class="expandable-header">
+        <h3><span class="aui-icon aui-icon-small aui-iconfont-arrows-down expand-arrow">Expand</span>{$displayId}</h3>
+    </div>
+    <div class="expandable-contents">
+        <form class="aui" action="javascript:void(0);">
+            {call .pageSelector}
+                {param selectName: 'javadoc'/}
+                {param labelName: 'Javadoc location'/}
+                {param pages: $pages/}
+                {param selectedPageId: $javadocPageId/}
+            {/call}
+
+            {call .pageSelector}
+                {param selectName: 'uml'/}
+                {param labelName: 'UML location'/}
+                {param pages: $pages/}
+                {param selectedPageId: $umlPageId/}
+            {/call}
+
+            <fieldset class="group git-events">
+                <legend><span>Git events</span></legend>
+                    <div class="checkbox">
+                        <label>Listen for pushes</label>
+                        <input class="checkbox isListened" type="checkbox" title="isListened"
+                               {if $isListened}
+                               checked="checked"
+                               {/if}
+                        >
+                    </div>
+            </fieldset>
+
+            <div class="field-group scheduled-events">
+                <label>Scheduled events</label>
+                <div>
+                    {foreach $scheduledEvent in $scheduledEvents}
+                        {call .scheduledEventDetails data="$scheduledEvent"/}
+                    {/foreach}
+                    <button class="aui-button add-scheduled-event-button">Add event</button>
+                </div>
+            </div>
+            <button class="aui-button force-regenerate-button">Force javadoc generation</button>
+        </form>
+    </div>
+</div>
+{/template}
+
+/**
+ * Renders scheduled event details
+ * @param scheduleStartIso
+ * @param periodIso
+ */
+{template .scheduledEventDetails}
+<div class="aui scheduled-event">
+    <div class="schedule-start">
+        <label>Schedule start</label>
+        <input class="text" type="text" name="schedule-start" value="{$scheduleStartIso}" title="Schedule start">
+    </div>
+    <div class="period">
+        <label>Period</label>
+        <input class="text" type="text" name="schedule-period" value="{$periodIso}" title="Period">
+    </div>
+    <div>
+        <button class="aui-button remove-scheduled-event-button">Remove event</button>
+    </div>
+</div>
+{/template}
+
+/**
+ * Renders page selector
+ * @param selectName
+ * @param labelName
+ * @param pages
+ * @param selectedPageId
+ */
+{template .pageSelector}
+<div class="field-group page-selector">
+    <label>{$labelName}</label>
+    <select name="{$selectName}" data-selector-name="{$selectName}" class="select" title="{$selectName}">
+        <option value=-1>--Select page--</option>
+        {foreach $page in $pages}
+            <option value="{$page.id}"
+                {if $page.id== $selectedPageId}
+                    selected="selected"
+                {/if}
+            >{$page.title}</option>
+        {/foreach}
+    </select>
+    <button class="aui-button add-page-btn">+</button>
+</div>
+{/template}

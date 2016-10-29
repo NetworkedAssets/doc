@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>Configure DoC</title>
+    <meta name="decorator" content="main"/>
+    #requireResource("confluence.web.resources:ajs")
+    #requireResource("com.atlassian.auiplugin:aui-select2")
+    #requireResource("com.atlassian.auiplugin:aui-toggle")
+    #requireResource("com.atlassian.auiplugin:dialog2")
+    #requireResource("com.networkedassets.autodoc.confluence-plugin:configuration-resources")
+    #putMetadata('configLocation', "space")
+</head>
+#applyDecorator("root")
+#decoratorParam("context" "space")
+#decoratorParam("mode" "collector")
+#decoratorParam("collector-key" "plugin-content-main-link")
+#applyDecorator ("root")
+    #decoratorParam ("context" "spacetoolspanel")
+    #decoratorParam("helper" $action.helper)
+    #decoratorParam("selectedSpaceToolsWebItem" "space-tools-autodoc-config")
+    <body>
+    $innerHtml
+    </body>
+    #end
+#end
+</html>

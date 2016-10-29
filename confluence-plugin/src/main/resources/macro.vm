@@ -1,0 +1,6 @@
+#putMetadata('macroResourcePath', $resourcesPath)
+#putMetadata('macroParamsJson', $paramsJson)
+#requireResource("com.atlassian.auiplugin:aui-select2")
+#requireResource("com.networkedassets.autodoc.confluence-plugin:macro-resources")
+
+$macroSectionHtml

@@ -1,0 +1,14 @@
+<div class="right">
+  <select #sourceUnitSelect>
+    <option *ngFor="let sourceUnit of availableSourceUnits" value="{{sourceUnit.id}}" [selected]="sourceUnit.id === currentSourceUnitId">
+      {{sourceUnit.name |replace:'|':'&nbsp;/&nbsp;'}}
+    </option>
+  </select>
+  <select #docTypeSelect>
+    <option *ngFor="let docType of docTypes" [value]="docType.docType" [selected]="docType.docType === currentDocType">
+      {{docType.name}}
+    </option>
+  </select>
+</div>
+
+<router-outlet></router-outlet>

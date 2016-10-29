@@ -1,0 +1,25 @@
+
+aside > h2 span.expandAllCollapseAll {
+  vertical-align: text-bottom;
+  display: inline-block;
+  float: right;
+  padding-right: 10px;
+}
+
+aside > h2 span.expandAllCollapseAll a, aside > h2 span.expandAllCollapseAll span {
+  cursor: pointer;
+  font-size: 10pt;
+  vertical-align: middle;
+}
+
+aside > h2:after, aside > form:after {
+  content: "\a";
+  white-space: pre;
+}
+
+.loading {
+  display: block;
+  margin: auto;
+  width: 30%;
+}
+

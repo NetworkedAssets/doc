@@ -1,0 +1,142 @@
+#doc_config-loading {
+    height: 200px;
+    width: 100%;
+}
+
+.doc_config-event div.inline-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+#doc_config-branch div.table, #doc_config-admin div.table {
+    display: table;
+    width: 100%;
+}
+
+#doc_config-branch div.table div.table-row, #doc_config-admin div.table-row {
+    display: table-row;
+}
+
+#doc_config-branch div.table div.table-row > div, #doc_config-branch-container .table-cell, #doc_config-admin .table-cell {
+    display: table-cell;
+    vertical-align: top;
+    padding: 20px;
+}
+
+#doc_config-branch-menu {
+    width: 200px;
+}
+
+#doc_config-branch-menu form > div {
+    display: block;
+}
+
+#doc_config-branch-container div.aui-message  {
+    display: inline-block;
+}
+
+#doc_config-sources form {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+    width: 400px;
+}
+
+.doc-aui-button-group .aui-button-primary {
+    font-weight: normal;
+}
+
+#doc_config-branch-container .table-cell, #doc_config-admin .table-cell {
+    display: table-cell;
+    width: 48%;
+}
+
+#doc_config-admin .table-cell:first-of-type {
+    border-right: 1px solid #ccc;
+}
+
+.doc_config-branch-event {
+    border-bottom: 1px solid #eee;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.doc_config-branch-event.even {
+    background: #fafafa;
+}
+
+#doc_config-branch-container h4 {
+    margin-top: 1em;
+}
+
+#doc_config .spin {
+    display: inline-block;
+    /*width: 20px;
+    height: 20px;*/
+    padding-left: 10px;
+    height: 5px;
+}
+
+#doc_config .spin.block {
+    display: block;
+    height: 100px;
+    width: 100%;
+}
+
+span.doc_config-branch-menu-option span.indicator {
+    display: inline-block;
+    color: #ccc;
+    width: 10px;
+}
+
+span.doc_config-branch-menu-option.listened {
+    font-weight: bold;
+}
+
+span.doc_config-branch-menu-option.listened span.indicator {
+    color: #67ab49;
+    font-size: 12px;
+}
+
+#doc_config-admin div.aui-message-warning, #doc_config-admin div.aui-message-error {
+    display: inline-block;
+}
+
+#doc_config-admin div.source {
+    padding: 20px;
+}
+
+#doc_config-admin div.source.even {
+    background: #f5f5f5;
+}
+
+#doc_config-admin div.source.odd {
+    background: #fff;
+}
+
+#doc_config-admin .table {
+    margin-top: 20px;
+}
+
+#doc_config-admin div.source p.url {
+    color: #666;
+    margin: 0;
+}
+
+#doc_config-admin div.source button.delete {
+    float: right;
+}
+
+#doc_config-admin div.source h3 {
+    margin: 0;
+}
+
+#doc_config-admin .addFromAppLinksCntr {
+    padding-top: 1em;
+    text-align: center;
+}
+
+#doc_config hr {
+    border: none;
+    border-top: 1px solid #eee;
+}

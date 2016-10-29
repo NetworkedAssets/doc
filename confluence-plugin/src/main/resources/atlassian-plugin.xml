@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<atlassian-plugin key="${project.groupId}.${project.artifactId}"
+                  name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}"/>
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+        <param name="vendor-logo">images/vendorLogo.png</param>
+        <param name="vendor-icon">images/vendorIcon.png</param>
+        <param name="configure.url">/admin/plugins/autodoc/config.action</param>
+        <!--Licensing-->
+        <param name="atlassian-licensing-enabled">false</param>
+    </plugin-info>
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="autodoc_confluence"/>
+    <!-- add our web resources -->
+    <web-resource key="autodoc_confluence-resources" name="autodoc_confluence Web Resources">
+        <resource type="download" name="images/" location="/images"/>
+        <resource type="download" name="autodoc-style.css" location="/css/autodoc-style.css"/>
+
+        <context>autodoc_confluence</context>
+    </web-resource>
+    <web-resource key="autodoc-macro-params" name="DoC macro parameter autocompletion">
+        <resource type="download" name="autodocMacroParams.js"
+                  location="js/autodocMacroParams.js"/>
+        <dependency>confluence.editor.actions:editor-macro-browser
+        </dependency>
+        <context>macro-browser</context>
+    </web-resource>
+    <web-resource key="configuration-resources" name="Configuration web resources">
+        <resource type="download" name="configurationResources/"
+                  location="/configurationResources"/>
+        <resource type="download" name="css/doc_config.css"
+                  location="configurationResources/css/doc_config.css"/>
+        <resource type="download" name="js/lib/angular.min.js"
+                  location="configurationResources/js/lib/angular.min.js"/>
+        <resource type="download" name="js/lib/angular-resource.min.js"
+                  location="configurationResources/js/lib/angular-resource.min.js"/>
+        <resource type="download" name="js/app.js"
+                  location="configurationResources/js/app.js"/>
+        <resource type="download" name="js/services/settingsService.js"
+                  location="configurationResources/js/services/settingsService.js"/>
+        <resource type="download" name="js/services/urlService.js"
+                  location="configurationResources/js/services/urlService.js"/>
+        <resource type="download" name="js/ctrl/TransformerUrlController.js"
+                  location="configurationResources/js/ctrl/TransformerUrlController.js"/>
+        <resource type="download" name="js/dirs/auiSelect2.js"
+                  location="configurationResources/js/dirs/auiSelect2.js"/>
+        <resource type="download" name="js/dirs/docAuiButtonGroup.js"
+                  location="configurationResources/js/dirs/docAuiButtonGroup.js"/>
+        <resource type="download" name="js/dirs/docAuiDatePicker.js"
+                  location="configurationResources/js/dirs/docAuiDatePicker.js"/>
+        <resource type="download" name="data/settings3.json"
+                  location="configurationResources/data/settings3.json"/>
+    </web-resource>
+    <web-resource key="soy-templates">
+        <dependency>com.atlassian.soy.soy-template-plugin:soy-deps
+        </dependency>
+        <!-- Available to the server-side only -->
+        <resource type="soy" name="configureScreen" location="/templates/configureScreen.soy"/>
+        <!-- Make available to the client-side in JS as well... -->
+        <transformation extension="soy">
+            <transformer key="soyTransformer"/>
+        </transformation>
+        <resource type="download" name="configureScreen.soy.js"
+                  location="/templates/configureScreen.soy"/>
+        <context>autodoc_confluence</context>
+    </web-resource>
+
+    <resource name="frontend/" type="download" location="frontend">
+    </resource>
+
+    <!-- imports -->
+    <component-import key="applicationProperties"
+                      interface="com.atlassian.sal.api.ApplicationProperties"/>
+    <component-import key="pluginSettingsFactory"
+                      interface="com.atlassian.sal.api.pluginsettings.PluginSettingsFactory"/>
+    <component-import key="applicationLinkService"
+                      interface="com.atlassian.applinks.api.ApplicationLinkService"/>
+    <component-import key="userAccessor"
+                      interface="com.atlassian.confluence.user.UserAccessor"/>
+    <component-import key="soyTemplateRenderer"
+                      interface="com.atlassian.soy.renderer.SoyTemplateRenderer"/>
+    <component-import key="ao" name="Active Objects service"
+                      interface="com.atlassian.activeobjects.external.ActiveObjects">
+        <description>Component to access Active Objects functionality from the
+            plugin
+        </description>
+    </component-import>
+    <!--Licensing-->
+    <component-import key="pluginLicenseManager" interface="com.atlassian.upm.api.license.PluginLicenseManager"/>
+
+    <!-- Configuration GUI -->
+    <xwork name="Admin configuration action" key="admin-configuration-action">
+        <package extends="default" name="autodoc-configure-action"
+                 namespace="/admin/plugins/autodoc">
+            <default-interceptor-ref name="defaultStack"/>
+            <action class="com.networkedassets.autodoc.configuration.AdminConfigurationAction"
+                    method="load" name="config">
+                <result name="error" type="velocity">/configurationResources/adminConfiguration.vm
+                </result>
+                <result name="success" type="velocity">/configurationResources/adminConfiguration.vm
+                </result>
+            </action>
+            <action class="com.networkedassets.autodoc.configuration.AdminConfigurationAction"
+                    method="save" name="save">
+                <interceptor-ref name="validatingStack"/>
+                <result name="error" type="velocity">/configurationResources/adminConfiguration.vm
+                </result>
+                <result name="success" type="redirect">/admin/plugins/autodoc/config.action
+                </result>
+            </action>
+        </package>
+    </xwork>
+
+    <resource key="icons" name="icons/" type="download" location="images"/>
+    <!--Macro-->
+    <xhtml-macro name="docMacro"
+                 class="com.networkedassets.autodoc.DocMacro"
+                 icon="/download/resources/${project.groupId}.${project.artifactId}/icons/pluginMacroIcon.png"
+                 key="docMacro">
+        <description>DoC macro displaying documentation in various forms on pages
+        </description>
+        <parameters>
+            <parameter name="source" type="string" required="true"/>
+            <parameter name="bundle" type="string" required="true"/>
+            <parameter name="omniDoc" type="boolean"/>
+            <parameter name="classDiagram" type="boolean"/>
+            <parameter name="structureGraph" type="boolean"/>
+            <parameter name="markup" type="boolean"/>
+        </parameters>
+    </xhtml-macro>
+
+    <!--Confluence rest-->
+    <rest key="rest" path="/doc" version="1.0">
+        <description>Provides REST endpoints used by DoC</description>
+    </rest>
+
+    <component key="bundleAccessTokenService"
+               class="com.networkedassets.autodoc.configuration.BundleAccessTokenService"/>
+    <component key="docSettingsService" class="com.networkedassets.autodoc.configuration.DocSettingsService"/>
+    <component key="docRepository" class="com.networkedassets.autodoc.documentation.DocumentationRepository"/>
+
+    <ao key="ao-module">
+        <entity>com.networkedassets.autodoc.configuration.BundleAccessToken</entity>
+    </ao>
+</atlassian-plugin>

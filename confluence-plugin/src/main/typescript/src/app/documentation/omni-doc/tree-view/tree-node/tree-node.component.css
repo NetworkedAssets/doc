@@ -1,0 +1,96 @@
+.all-item {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.node-item {
+  color: black !important;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.item {
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 20px;
+}
+
+.children-items {
+  padding-left: 25px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin: 0;
+
+}
+
+span.entityType {
+  border-radius: 0.2em;
+  color: #fff;
+  display: inline-block;
+  font-family: sans-serif !important;
+  text-transform: uppercase;
+  text-align: center;
+  min-width: 1em;
+  height: 1em;
+  font-size: 0.8em;
+  line-height: 1em;
+  font-weight: bold;
+  margin-right: 0.2em;
+}
+
+span.entityType.entityTypePackage {
+  background: #666;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+span.entityType.entityTypeClass {
+  background: #59afe1;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+span.entityType.entityTypeInterface {
+  background: #8eb021;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+span.entityType.entityTypeAnnotation {
+  background: #f6c342;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+span.entityType.entityTypeException {
+  background: #d04437;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+span.entityType.entityTypeEnum {
+  background: #84bbc6;
+  padding: 0.3em 0.2em 0.1em 0.2em;
+}
+
+.focus {
+  font-weight: bold;
+}
+
+span.entityName {
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+span.entityName:hover {
+  position: absolute;
+  background-color: white;
+  color: #3572b0;
+  overflow: visible;
+  border-color: #d6d6d6;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+
+

@@ -1,0 +1,71 @@
+#doc_structureGraph.loading {
+  visibility: hidden;
+}
+
+#doc_structureGraph .node circle {
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+#doc_structureGraph .node text {
+  /*display: none;*/
+  font: 10px sans-serif;
+  pointer-events: none;
+  text-anchor: left;
+  left: 10px;
+}
+
+#doc_structureGraph .node:hover text {
+  display: block;
+}
+
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+#doc_structureGraph .node.entityTypePackage circle {
+  fill: #666;
+}
+
+/*#doc_structureGraph .node.entityTypePackage.collapsed circle {
+    fill: #f00;
+}
+
+#doc_structureGraph .node.entityTypePackage.expanded circle {
+    fill: #0f0;
+}*/
+
+#doc_structureGraph .node.entityTypeClass circle {
+  fill: #59afe1;
+}
+
+#doc_structureGraph .node.entityTypeInterface circle {
+  fill: #8eb021;
+  font-family: serif;
+}
+
+#doc_structureGraph .node.entityTypeAnnotation circle {
+  fill: #f6c342;
+}
+
+#doc_structureGraph .node.entityTypeException circle {
+  fill: #d04437;
+}
+
+#doc_structureGraph .node.entityTypeEnum circle {
+  fill: #84bbc6;
+}
+
+#doc_structureGraph .node text.type {
+  text-anchor: middle;
+  fill: #fff;
+  font-weight: 600;
+}
+
+#doc_structureGraphTakesLongerThanUsual {
+  width: 300px;
+  margin: 20px auto;
+}

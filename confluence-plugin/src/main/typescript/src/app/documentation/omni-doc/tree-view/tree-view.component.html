@@ -1,0 +1,20 @@
+<div>
+  <aside class="doc_tree">
+    <h2>
+    <span *ngIf="expandCollapseButton" class="expandAllCollapseAll">
+      <a (click)="expandAll()">Expand all</a>&nbsp;<span>|</span>
+      <a (click)="collapseAll()">Collapse all</a>
+    </span>
+    </h2>
+    <form *ngIf="filter" class="aui">
+      <input [(ngModel)]="query" type="text" name="query" class="text" placeholder="Filter..."
+             (ngModelChange)="filterChange($event)">
+    </form>
+    <div *ngIf="loading" class="loading">
+      <span class="aui-icon aui-icon-large aui-icon-wait">Loading...</span>
+    </div>
+    <app-tree-node *ngFor="let n of treeNode" [node]="n" [directoryIcon]="directoryIcon"
+                   (clicked)="nodeClicked($event)">
+    </app-tree-node>
+  </aside>
+</div>

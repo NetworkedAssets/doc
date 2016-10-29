@@ -1,0 +1,16 @@
+<div class="aui-message aui-message-error" *ngIf="isError">
+  <p class="title">
+    <strong>An error occurred</strong>
+  </p>
+</div>
+<div id="doc_structureGraphProgressbar" class="aui-progress-indicator" *ngIf="isLoading"><span
+  class="aui-progress-indicator-value"></span></div>
+<div class="aui-message aui-message-info" id="doc_structureGraphTakesLongerThanUsual" *ngIf="isLoadingTakesLonger">
+  <p class="title">
+    <strong>It takes longer than usual...</strong>
+  </p>
+  <p>The structure diagram can be much less efficient for large projects.</p>
+</div>
+<div id="doc_structureGraph" [ngClass]="{'loading': isLoading}"></div>
+
+

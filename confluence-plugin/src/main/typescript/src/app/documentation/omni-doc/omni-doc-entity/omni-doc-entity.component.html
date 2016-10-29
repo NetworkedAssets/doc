@@ -1,0 +1,131 @@
+<div *ngIf="loading" class="loading">
+  <span class="aui-icon aui-icon-large aui-icon-wait">Loading...</span>
+</div>
+<div *ngIf="!loading && entity === null">
+  <div class="javadoc_container">
+    <img [src]="resolvePath('images/doc_logo.png')" alt="DoC - Documentation from Code">
+    <form class="aui">
+      <app-search-box></app-search-box>
+    </form>
+  </div>
+</div>
+<div *ngIf="!loading && entity">
+
+  <ol class="aui-nav aui-nav-breadcrumbs" *ngIf="entity.locationPath && entity.locationPath.length > 0">
+    <li *ngFor="let package of entity.locationPath" ngClass="{'aui-nav-selected': last}">
+      <a *ngIf="!last" href="javascript:void(0)" [innerHTML]="package | omniDocTag"></a>
+      <span *ngIf="last" [innerHTML]="package | omniDocTag"></span>
+    </li>
+  </ol>
+
+  <div [innerHTML]="entity.beforeMetadata|omniDocTag"></div>
+  <div class="metadata">
+    <span *ngFor="let meta of entity.metadata; let l = last" [innerHTML]="meta + (!l?'&nbsp;':'') |omniDocTag"></span>
+  </div>
+  <div [innerHTML]="entity.afterMetadata|omniDocTag"></div>
+
+  <div>{{entity.beforeModifiers}}</div>
+  <span class="modifiers" ng-show="vm.entity.modifiers && vm.entity.modifiers.length">
+      <span *ngFor="let modifier of entity.modifiers" class="modifier {{modifier}}">{{modifier}}</span>
+  </span>
+  <div>{{entity.afterModifiers}}</div>
+
+  <span class="entityType entityType{{entity.itemType|capitalize}}"><span
+    [outerHTML]="entity.beforeItemType|omniDocTag"></span><span [outerHTML]="entity.itemType|omniDocTag"></span><span
+    [outerHTML]="entity.afterItemType|omniDocTag"></span></span>
+
+  <h1 class="aui-page-header-main name {{entity.modifiers.join(' ')}}">
+    <span [outerHTML]="entity.beforeDisplayName|omniDocTag"></span><span
+    [outerHTML]="entity.displayName|omniDocTag"></span><span [outerHTML]="entity.afterDisplayName|omniDocTag"></span>
+  </h1>
+
+  <div [innerHTML]="entity.beforeRelations"></div>
+  <div *ngFor="let relation of entity.relations" class="relations supers"><!-- todo change class -->
+    <span>{{relation.displayName ? relation.displayName : relation.name}}</span>
+    <span *ngFor="let item of relation.items; let last = last">
+      <span [innerHTML]="item|omniDocTag"></span>
+      <span *ngIf="!last" class="comma">, </span>
+    </span>
+  </div>
+  <div [innerHTML]="entity.afterRelationships"></div>
+
+  <div [innerHTML]="entity.beforeDocText|omniDocTag"></div>
+  <div [innerHTML]="entity.docText|omniDocTag"></div>
+  <div [innerHTML]="entity.afterDocText|omniDocTag"></div>
+
+  <div class="doc_panel elems"
+       *ngFor="let memberCategory of entity.memberCategories; let index = index">
+    <h2 class="collapsible">
+      <span (click)="memberCategory.collapsed = !memberCategory.collapsed;"
+            class="aui-icon aui-icon-small aui-iconfont-arrow-{{memberCategory.collapsed ? 'down' : 'up'}}">Expand/Collapse</span>
+      <span (click)="memberCategory.collapsed = !memberCategory.collapsed;">{{memberCategory.name|capitalize}}</span>
+    </h2>
+    <table [hidden]="memberCategory.collapsed">
+      <tr [ngClass]="{'elem': true, 'even': even}"
+          *ngFor="let member of memberCategory.items; let even = even">
+        <td *ngIf="memberCategory.name != 'constant'">
+          <div [innerHTML]="member?.data?.functionReturnType|omniDocTag"></div>
+          <div [innerHTML]="member?.data?.beforeModifiers|omniDocTag"></div>
+          <span class="modifiers" *ngIf="member?.data?.modifiers && member?.data?.modifiers?.length">
+            <span *ngFor="let modifier of member?.data?.modifiers" class="modifier {{modifier}}"
+                  [innerHTML]="modifier|omniDocTag"></span>
+          </span>
+          <div [innerHTML]="member?.data?.afterModifiers|omniDocTag"></div>
+        </td>
+        <td>
+          <span class="toggle" *ngIf="member?.data?.docText" title="Show/hide details">
+            <span class="aui-icon aui-icon-small aui-iconfont-arrow-{{member.collapsed?'up':'down'}}"
+                  (click)="member.collapsed = !member.collapsed"></span>
+          </span>
+          <div [innerHTML]="member?.data?.beforeMetadata|omniDocTag"></div>
+          <div class="metadata">
+            <span *ngFor="let meta of member?.data?.metadata; let l = last"
+                  [innerHTML]="meta + (!l?'&nbsp;':'') |omniDocTag"></span>
+          </div>
+          <div [innerHTML]="member?.data?.afterMetadata|omniDocTag"></div>
+
+          <span class="name" *ngIf="member?.data?.inlined">{{member?.data?.shortName}}</span>
+          <a class="name" *ngIf="!member?.data?.inlined"
+             href="#/{{paramsService.getSourceUnitId()}}/omnidoc/{{member?.data?.fullName}}">{{member?.data?.shortName}}</a>
+          <!-- These weird comments below are mandatory, because they prevent white spaces between elements -->
+          <span *ngIf="memberCategory.name === 'methods' || memberCategory.name === 'constructors'" class="parenthesis">(</span><!--
+          --><span class="parameters" *ngIf="member?.data?.functionParameters?.length"><!--
+            --><span *ngFor="let parameter of member?.data?.functionParameters; let l = last" class="parameter"><!--
+              --><span class="parameterName" [innerHTML]="parameter|omniDocTag"></span><!--
+              --><span *ngIf="!l" class="comma">, </span><!--
+            --></span><!--
+          --></span><!--
+          --><span *ngIf="memberCategory.name === 'methods' || memberCategory.name === 'constructors'"
+                   class="parenthesis">)</span>
+
+          <div *ngIf="entity.itemType !== 'package'">
+            <div [innerHTML]="member?.data?.beforeRelations"></div>
+            <div *ngFor="let relation of member?.data?.relations" class="relations">
+              <span>{{relation.displayName ? relation.displayName : relation.name}}</span>
+              <span *ngFor="let item of relation.items; let last = last">
+                <span [innerHTML]="item|omniDocTag"></span>
+                <span *ngIf="!last" class="comma">, </span>
+            </span>
+            </div>
+            <div [innerHTML]="member?.data?.afterRelationships"></div>
+          </div>
+
+          <div [hidden]="member.collapsed" [innerHTML]="member?.data?.excerpt"></div>
+          <div [hidden]="!member.collapsed" [innerHTML]="member?.data?.beforeDocText"></div>
+          <div [hidden]="!member.collapsed" class="comment" [innerHTML]="member?.data?.docText"></div>
+          <div [hidden]="!member.collapsed" [innerHTML]="member?.data?.afterDocText"></div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="classDiagram" *ngIf="classDiagram.enabled && entity.itemType != 'package'">
+    <h2 (click)="classDiagram.expanded = !classDiagram.expanded;" class="collapsible">
+      <span
+        class="aui-icon aui-icon-small aui-iconfont-arrow-{{classDiagram.expanded ? 'up' : 'down'}}">Expand/Collapse</span>
+      UML Diagram
+    </h2>
+    <app-class-diagram [data]="classDiagram.data"
+                       *ngIf="classDiagram.expanded && classDiagram.data"></app-class-diagram>
+  </div>
+</div>

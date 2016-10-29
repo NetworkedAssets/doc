@@ -1,0 +1,5 @@
+{
+   "output-path": "../../../target/classes/frontend",
+   "port": 4201,
+   "live-reload-port": 49153
+}

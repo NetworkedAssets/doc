@@ -1,0 +1,435 @@
+{
+  "confluenceUrl": "http://46.101.240.138:8090/",
+  "confluenceUsername": "mrobakowski",
+  "confluencePassword": "admin",
+  "transformerSettings": {
+    "transformerPort": 8050,
+    "localhostAddress": "https://localhost:8050/event"
+  },
+  "sources": [{
+    "id": 10,
+    "name": "asdf",
+    "url": "http://atlas.networkedassets.net:7990",
+    "sourceType": "STASH",
+    "username": "kcala",
+    "password": null,
+    "sourceExists": true,
+    "credentialsCorrect": true,
+    "nameCorrect": true,
+    "sourceTypeCorrect": true,
+    "correct": true,
+    "projects": {
+      "AUT": {
+        "name": "Autodoc",
+        "key": "AUT",
+        "repos": {
+          "autodoc": {
+            "name": "autodoc",
+            "slug": "autodoc",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "APD": {
+        "name": "Atlas Plugin Development",
+        "key": "APD",
+        "repos": {
+          "javadoc-plugin": {
+            "name": "Javadoc Plugin",
+            "slug": "javadoc-plugin",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "CAT": {
+        "name": "Caturday",
+        "key": "CAT",
+        "repos": {
+          "catrepo": {
+            "name": "CatRepo",
+            "slug": "catrepo",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "TP": {
+        "name": "Third Project",
+        "key": "TP",
+        "repos": {
+          "repo3": {
+            "name": "repo3",
+            "slug": "repo3",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lol": {
+            "name": "lol",
+            "slug": "lol",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lubieplacki": {
+            "name": "lubieplacki",
+            "slug": "lubieplacki",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/dev": {
+                "displayId": "dev",
+                "id": "refs/heads/dev",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "SP": {
+        "name": "Second Project",
+        "key": "SP",
+        "repos": {
+          "repo2": {
+            "name": "repo2",
+            "slug": "repo2",
+            "branches": {
+              "refs/heads/branch2": {
+                "displayId": "branch2",
+                "id": "refs/heads/branch2",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "hookKey": "com.networkedassets.atlasian.plugins.stash-postReceive-hook-plugin:postReceiveHookListener"
+  }, {
+    "id": 4,
+    "name": "olkk-changed",
+    "url": "http://46.101.240.138:7990",
+    "sourceType": "STASH",
+    "username": "kcala",
+    "password": null,
+    "sourceExists": true,
+    "credentialsCorrect": true,
+    "nameCorrect": true,
+    "sourceTypeCorrect": true,
+    "correct": true,
+    "projects": {
+      "AUT": {
+        "name": "Autodoc",
+        "key": "AUT",
+        "repos": {
+          "autodoc": {
+            "name": "autodoc",
+            "slug": "autodoc",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "APD": {
+        "name": "Atlas Plugin Development",
+        "key": "APD",
+        "repos": {
+          "javadoc-plugin": {
+            "name": "Javadoc Plugin",
+            "slug": "javadoc-plugin",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "CAT": {
+        "name": "Caturday",
+        "key": "CAT",
+        "repos": {
+          "catrepo": {
+            "name": "CatRepo",
+            "slug": "catrepo",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "TP": {
+        "name": "Third Project",
+        "key": "TP",
+        "repos": {
+          "repo3": {
+            "name": "repo3",
+            "slug": "repo3",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lol": {
+            "name": "lol",
+            "slug": "lol",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lubieplacki": {
+            "name": "lubieplacki",
+            "slug": "lubieplacki",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/dev": {
+                "displayId": "dev",
+                "id": "refs/heads/dev",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "SP": {
+        "name": "Second Project",
+        "key": "SP",
+        "repos": {
+          "repo2": {
+            "name": "repo2",
+            "slug": "repo2",
+            "branches": {
+              "refs/heads/branch2": {
+                "displayId": "branch2",
+                "id": "refs/heads/branch2",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "hookKey": "com.networkedassets.atlasian.plugins.stash-postReceive-hook-plugin:postReceiveHookListener"
+  }, {
+    "id": 5,
+    "name": "olk9",
+    "url": "http://46.101.240.138:7990",
+    "sourceType": "STASH",
+    "username": "kcala",
+    "password": null,
+    "sourceExists": true,
+    "credentialsCorrect": true,
+    "nameCorrect": true,
+    "sourceTypeCorrect": true,
+    "correct": true,
+    "projects": {
+      "AUT": {
+        "name": "Autodoc",
+        "key": "AUT",
+        "repos": {
+          "autodoc": {
+            "name": "autodoc",
+            "slug": "autodoc",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "APD": {
+        "name": "Atlas Plugin Development",
+        "key": "APD",
+        "repos": {
+          "javadoc-plugin": {
+            "name": "Javadoc Plugin",
+            "slug": "javadoc-plugin",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "CAT": {
+        "name": "Caturday",
+        "key": "CAT",
+        "repos": {
+          "catrepo": {
+            "name": "CatRepo",
+            "slug": "catrepo",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "TP": {
+        "name": "Third Project",
+        "key": "TP",
+        "repos": {
+          "repo3": {
+            "name": "repo3",
+            "slug": "repo3",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lol": {
+            "name": "lol",
+            "slug": "lol",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          },
+          "lubieplacki": {
+            "name": "lubieplacki",
+            "slug": "lubieplacki",
+            "branches": {
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/dev": {
+                "displayId": "dev",
+                "id": "refs/heads/dev",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      },
+      "SP": {
+        "name": "Second Project",
+        "key": "SP",
+        "repos": {
+          "repo2": {
+            "name": "repo2",
+            "slug": "repo2",
+            "branches": {
+              "refs/heads/branch2": {
+                "displayId": "branch2",
+                "id": "refs/heads/branch2",
+                "listenTo": "none",
+                "scheduledEvents": []
+              },
+              "refs/heads/master": {
+                "displayId": "master",
+                "id": "refs/heads/master",
+                "listenTo": "none",
+                "scheduledEvents": []
+              }
+            }
+          }
+        }
+      }
+    },
+    "hookKey": "com.networkedassets.atlasian.plugins.stash-postReceive-hook-plugin:postReceiveHookListener"
+  }
+  ]
+}
+

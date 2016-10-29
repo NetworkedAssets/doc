@@ -1,0 +1,26 @@
+<div class="omnidoc">
+  <section id="content" role="main">
+    <div class="aui-page-panel">
+      <div class="aui-page-panel-inner">
+        <div class="aui-page-panel-nav menu">
+          <div id="aui-vnav" class="aui-flatpack">
+            <nav class="aui-navgroup aui-navgroup-vertical">
+              <div class="aui-navgroup-inner">
+                <div class="tree">
+                  <app-tree-view [directoryIcon]="false" [expandCollapseButton]="true" [filter]="true"
+                                 [treeNode]="treeStructure"
+                                 (onChange)="displayContent($event)">
+                  </app-tree-view>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <section class="aui-page-panel-content">
+          <router-outlet></router-outlet>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+

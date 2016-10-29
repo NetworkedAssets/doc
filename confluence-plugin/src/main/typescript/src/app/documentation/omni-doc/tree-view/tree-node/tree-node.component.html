@@ -1,0 +1,24 @@
+<li *ngIf="node.isRoot && !node.isHidden" class="all-item">
+  <a class="node-item" [ngClass]="{focus: node.focus}">
+    <span (click)="clickNodeExpand()"
+          class=" point aui-icon aui-icon-small aui-iconfont-arrow-{{node.isExpanded?'up':'down'}}"></span>
+    <span *ngIf="!directoryIcon" class="entityType entityType{{node.type|capitalize}}">{{node.type[0]}}</span>
+    <span class="entityName" (click)="clickNodeName(node)">
+      <span *ngIf="directoryIcon"
+            class="aui-icon aui-icon-small aui-iconfont-devtools-folder-{{node.isExpanded?'open':'closed'}}"></span>
+      {{ node.name }}
+    </span>
+  </a>
+  <ul *ngIf="node.isExpanded" class="children-items">
+    <app-tree-node *ngFor="let n of node.children" [node]="n" [directoryIcon]="directoryIcon"
+                   (clicked)="propagate($event)"></app-tree-node>
+  </ul>
+</li>
+<li *ngIf="!node.isRoot && !node.isHidden" class="all-item">
+  <a class="item" [ngClass]="{focus: node.focus}">
+    <span class="entityType entityType{{node.type|capitalize}}">{{node.type[0]}}</span>
+    <span class="entityName" (click)="clickNodeName(node)">{{ node.name }}</span>
+  </a>
+</li>
+
+

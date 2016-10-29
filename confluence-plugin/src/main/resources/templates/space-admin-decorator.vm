@@ -1,0 +1,28 @@
+#set ( $d = "$")
+<html>
+    <head>
+        <title>Configure DoC</title>
+        <meta name="decorator" content="main"/>
+        #requireResource("confluence.web.resources:ajs")
+		#requireResource("com.atlassian.auiplugin:aui-select")
+		#requireResource("com.atlassian.auiplugin:dialog2")
+		$webResourceManager.requireResourcesForContext("autodoc_confluence")
+		$webResourceManager.requireResourcesForContext("add-pagetree")
+    </head>
+
+        #applyDecorator("root")
+        #decoratorParam("helper" $action.helper)
+        #decoratorParam("context" "space-administration")
+
+        #applyDecorator ("root")
+            #decoratorParam ("context" "spaceadminpanel")
+            ##decoratorParam ("selection" "autodoc-serverConfig-link")
+            #decoratorParam ("selectedSpaceToolsWebItem" "autodoc-configuration-link")
+            #decoratorParam ("helper" $action.helper)
+            
+            <body>
+                $soyRenderer.render($soyResource, $pageContent, $soyParams)
+            </body>
+        #end
+    #end
+</html>

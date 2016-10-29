@@ -1,0 +1,131 @@
+:host /deep/ {
+  width: 100%;
+  position: relative;
+  cursor: move;
+}
+
+:host /deep/ .loadingSpinner {
+  width: 100%;
+  height: 200px;
+}
+
+:host /deep/ .controls {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-family: sans-serif;
+}
+
+:host /deep/ .controls span {
+  border-radius: 0.5em;
+  display: inline-block;
+  padding: 0.3em;
+  margin: 0.5em;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  cursor: pointer;
+}
+
+:host /deep/ .link-tools .tool-remove,
+:host /deep/ .link-tools .tool-options,
+:host /deep/ .link .marker-arrowheads,
+:host /deep/ .link .connection-wrap {
+  display: none;
+}
+
+:host /deep/ svg {
+  width: 100%;
+  height: 100%;
+}
+
+:host /deep/ .node rect,
+:host /deep/ .node polygon {
+  color: #494948;
+  /*stroke: #c6d92d;*/
+  stroke-width: 1px;
+}
+
+.node {
+  cursor: pointer;
+}
+
+:host /deep/ .node rect.fields {
+  fill: #edf1b3;
+}
+
+:host /deep/ .node rect.outer {
+  fill: #e1ea9b;
+}
+
+.edgePath path {
+  stroke: #333;
+  fill: #333;
+  stroke-width: 1.5px;
+}
+
+:host /deep/ svg {
+  min-height: 500px;
+}
+
+:host /deep/ rect.head {
+  fill: #c8da2f;
+  color: #f00;
+  stroke-width: 0;
+}
+
+:host /deep/ text.head {
+  font-weight: bold;
+}
+
+:host /deep/ .node g text tspan.scope {
+  font-family: FontAwesome;
+}
+
+:host /deep/ .node g text tspan.scope.private {
+  fill: #d24538;
+}
+
+:host /deep/ .node g text tspan.scope.protected {
+  fill: #664b84;
+}
+
+:host /deep/ .node g text tspan.scope.public {
+  fill: #59aee1;
+}
+
+:host /deep/ .abstract {
+  font-style: italic;
+}
+
+:host /deep/ .static {
+  text-decoration: underline;
+}
+
+:host /deep/ g.edgePath path.path {
+  stroke: #999;
+  stroke-width: 3px;
+}
+
+:host /deep/ g.edgePath:hover path.path, :host /deep/ g.edgePath:hover marker polygon {
+  stroke: #06c;
+  stroke-width: 3px;
+}
+
+:host /deep/ svg marker polygon {
+  fill: #fff;
+  stroke: #999;
+  stroke-width: 2;
+  stroke-dasharray: 1, 0;
+}
+
+:host /deep/ svg .edgePath.aggregation marker polygon {
+  fill: #fff;
+}
+
+:host /deep/ svg .edgePath.composition marker polygon {
+  fill: #999;
+}
+
+:host /deep/ svg .edgePath.realization path.path, :host /deep/ svg .edgePath.dependency path.path {
+  stroke-dasharray: 10, 5;
+}
